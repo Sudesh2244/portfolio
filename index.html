@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudesh Kamthekar | Python & Django Developer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        :root {
+            --bg-dark: #0a192f;
+            --bg-card: #112240;
+            --text-primary: #e6f1ff;
+            --text-secondary: #8892b0;
+            --accent: #64ffda;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* --- Buttons --- */
+        .btn-primary {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            font-weight: 500;
+            padding: 8px 20px;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+        }
+
+        .btn-outline-light {
+            border: 2px solid var(--text-secondary);
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 8px 20px;
+            transition: var(--transition);
+        }
+
+        .btn-outline-light:hover {
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+            background-color: transparent;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            padding: 20px 0;
+        }
+
+        .navbar-brand {
+            color: var(--accent) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-size: 0.95rem;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 140px;
+        }
+
+        .hero h5 { color: var(--accent); font-weight: 400; margin-bottom: 15px;}
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 15px;}
+        .hero h3 { font-size: 1.75rem; color: var(--text-secondary); margin-bottom: 25px;}
+        .hero p { color: var(--text-secondary); max-width: 560px; font-size: 1.05rem; line-height: 1.6;}
+
+        .hero-img {
+            max-width: 360px;
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .social a {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-right: 20px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .social a:hover { color: var(--accent); transform: translateY(-3px); }
+
+        /* --- Cards Global --- */
+        .skill-card, .project-card, .cert-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            height: 100%;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .skill-card:hover, .project-card:hover, .cert-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(100, 255, 218, 0.2);
+        }
+
+        /* --- Skill Cards --- */
+        .skill-card { padding: 30px; }
+        .skill-card h4 { color: var(--text-primary); font-size: 1.25rem; font-weight: 600; margin-bottom: 20px; }
+        .skill-card ul { list-style: none; padding: 0; }
+        .skill-card li { color: var(--text-secondary); margin-bottom: 10px; font-size: 0.95rem; padding-left: 20px; position: relative; }
+        .skill-card li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); }
+
+        /* --- Project Image Styling --- */
+        .project-img-wrapper {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #071224;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; }
+        .project-content p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+        /* --- Timeline (Education & Experience) --- */
+        .timeline-box {
+            border-left: 2px solid var(--accent);
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-box::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .timeline-box h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: 5px; }
+        .timeline-box h5 { font-size: 1rem; color: var(--text-secondary); margin-bottom: 10px; }
+        .timeline-box .date { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 10px; }
+        .timeline-box p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 5px; }
+
+        /* --- Certifications --- */
+        .cert-card { padding: 25px; }
+        .cert-card i { font-size: 2rem; color: var(--accent); margin-bottom: 15px; display: inline-block; }
+        .cert-card h5 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+        .cert-card p { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0; }
+
+        /* --- Form Control --- */
+        .form-control {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 12px 18px;
+        }
+
+        .form-control:focus {
+            background-color: var(--bg-card);
+            border-color: var(--accent);
+            color: var(--text-primary);
+            box-shadow: none;
+        }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #060d1a;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Sudesh kamthekar</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section id="home" class="hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7" data-aos="fade-right">
+                <h5>Hello, I'm</h5>
+                <h1>Sudesh Kamthekar</h1>
+                <h3><span id="typing"></span></h3>
+                <p>Passionate Computer Engineering student and  backend developer. I specialize in building robust backend applications using Python and Django, creating clean REST APIs, and exploring AI-driven solutions.</p>
+                <div class="mt-4">
+    <a href="https://drive.google.com/file/d/1lmtRlBD_qaTbXTyndLf8A9qGnmxQfnxs/view?usp=sharing" download="Sudesh_Kamthekar_Resume.pdf" class="btn btn-primary me-3">
+        <i class="bi bi-download me-2"></i>Download Resume
+    </a>
+    
+    <a href="project.html" class="btn btn-outline-light">View Projects</a></div>
+                <div class="social mt-4">
+                    <a href="https://github.com/Sudesh2244" target="_blank"><i class="bi bi-github"></i></a>
+                    <a href="https://linkedin.com/in/sudesh-kamthekar-748861274" target="_blank"><i class="bi bi-linkedin"></i></a>
+<a href="mailto:sudeshkamthekar673@gmail.com">
+    <i class="bi bi-envelope-fill"></i>
+</a>                 </div>
+            </div>
+            <div class="col-lg-5 text-center" data-aos="fade-left">
+                <img src="C:\Users\sudes\Downloads\39fb33ed-571a-4116-994e-88487d6f2c23.png" class="img-fluid hero-img" alt="Sudesh Profile">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; max-width: 850px;">
+                    I am a  Diploma in Computer Engineering student with a deep passion for backend development and artificial intelligence. Having built multiple web ecosystems from scratch, I love translating complex algorithmic ideas into smooth, functioning web features.
+                </p>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; max-width: 850px;">
+                    As a fresher, I bring a strong foundational understanding of Object-Oriented Programming (OOP), database structures, and agile problem-solving. Having completed hands-on internships in web development and analytics, I am highly eager to jump into a collaborative team environment where I can write clean code, tackle bugs, and continue leveling up my skills.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="skill-card">
+                    <h4>Languages</h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java (Basic)</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+            </div>
+          
+            <div class="col-md-3">
+                <div class="skill-card">
+                    <h4>Web Frameworks</h4>
+                    <ul>
+                        <li>Django</li>
+                        <li>Django REST Framework</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="skill-card">
+                    <h4>Data & AI</h4>
+                    <ul>
+                        <li>Pandas & NumPy</li>
+                        <li>Matplotlib</li>
+                        <li>OpenCV</li>
+                        <li>Machine Learning Basics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="skill-card">
+                    <h4>Tools </h4>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>MySQL & SQLite</li>
+                        <li>GitHub Copilot / Cursor</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experience" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="timeline-box">
+                    <h4>Django Intern</h4>
+                    <h5>Perpex (Remote)</h5>
+                    <div class="date">Sep 2025 - Dec 2025</div>
+                    <p>• Handled backend routing, view logic, and data models for corporate web architecture features.</p>
+                    <p>• Identified and fixed code bottlenecks to optimize query response times and application performance.</p>
+                    <p>• Practiced clean documentation and structured code implementation according to modern developer standards.</p>
+                </div>
+                <div class="timeline-box">
+                    <h4>Data Analytics Intern</h4>
+                    <h5>Livetech India</h5>
+                    <div class="date">July 2025</div>
+                    <p>• Cleaned, filtered, and processed practical datasets using the Python library suite to handle null fields and data anomalies.</p>
+                    <p>• Applied key database querying through customized SQL filters and analytical Excel lookups.</p>
+                    <p>• Created comprehensive visual charts using Matplotlib to simplify performance summaries and trends.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="row g-4">
+            
+            <div class="col-md-6">
+                <div class="project-card d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="project-img-wrapper">
+                            <img src="https://media.licdn.com/dms/image/v2/D4D22AQG0TH28KQJ_ug/feedshare-image-high-res/B4DZqvcI3EGwAo-/0/1763879981072?e=1784764800&v=beta&t=zm1avDi3DsMwyD-rzeMFmZAf0RSzijT8S_ghdHNMuoo" alt="RedKnot AI Planner">
+                        </div>
+                        <div class="project-content">
+                            <h4>RedKnot (AI-Based Vacation Planner)</h4>
+                            <p>An intelligent web application that interacts with generative models to construct personalized trip itineraries and schedules based on client preferences, budgets, and constraint evaluation rules.</p>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4"><a href="https://github.com/Sudesh2244" target="_blank" class="btn btn-primary btn-sm">GitHub</a></div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="project-card d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="project-img-wrapper">
+                            <img src="images/project-data.jpg" alt="Student Data Analytics">
+                        </div>
+                        <div class="project-content">
+                            <h4>Student Data Management & Analytics</h4>
+                            <p>An administrative application built using Pandas and NumPy arrays to map academic tracking metrics, calculate grading curves, and quickly output accurate performance metrics.</p>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4"><a href="https://github.com/Sudesh2244" target="_blank" class="btn btn-primary btn-sm">GitHub</a></div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="project-card d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="project-img-wrapper">
+                            <img src="images/project-shop.jpg" alt="Ice Cream E-store">
+                        </div>
+                        <div class="project-content">
+                            <h4>IceCream Store Web Application</h4>
+                            <p>A full-featured responsive e-store architecture using Django. Built with custom session handling for user carts, catalog filtering, and robust client-side form validations.</p>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4"><a href="https://github.com/Sudesh2244" target="_blank" class="btn btn-primary btn-sm">GitHub</a></div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="project-card d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="project-img-wrapper">
+                            <img src="images/project-opencv.jpg" alt="Image Annotation">
+                        </div>
+                        <div class="project-content">
+                            <h4>Image Annotation Engine (OpenCV)</h4>
+                            <p>A lightweight computer vision script designed to parse coordinates and apply programmatic geometric boundaries, object masks, and clear annotations onto images dynamically.</p>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4"><a href="https://github.com/Sudesh2244" target="_blank" class="btn btn-primary btn-sm">GitHub</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="education" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="timeline-box">
+                    <h4>Diploma in Computer Engineering</h4>
+                    <h5>Dr. Babasaheb Ambedkar Technological University (Lonere, MH)</h5>
+                    <div class="date">2023 - 2026</div>
+                    <p>Core focus on Data Structures, Object-Oriented Programming, and Databases. Maintained an 8+ CGPA track.</p>
+                </div>
+                <div class="timeline-box">
+                    <h4>Higher Secondary Certificate (HSC - 12th)</h4>
+                    <h5>Sou Vimlabai Garware College (Pune, MH)</h5>
+                    <div class="date">Passed: 2023</div>
+                    <p>Completed standard state validation track covering Physics, Chemistry, and Mathematics.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="certifications" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Certifications</h2>
+        <div class="row g-4">
+            
+            <div class="col-md-3">
+    <div class="cert-card d-flex flex-column justify-content-between">
+        <div>
+            <i class="bi bi-bar-chart-line-fill"></i>
+            <h5>Data Analytics Using Python</h5>
+            <p class="mb-3">Issued by Livetech India</p>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#certModal" onclick="showCert('https://media.licdn.com/dms/image/v2/D4D22AQEca5zqrHgwTw/feedshare-image-high-res/B4DZgnNMUMGQAs-/0/1753004429285?e=1784764800&v=beta&t=eBwszKeG_VNiGYzrFjD-CoGdnpyLjumHEDIP1AyWDdw', 'Data Analytics Using Python')">View Certificate</button>
+        </div>
+    </div>
+</div>
+
+            <div class="col-md-3">
+    <div class="cert-card d-flex flex-column justify-content-between">
+        <div>
+            <i class="bi bi-code-square"></i>
+            <h5>Python Programming</h5>
+            <p class="mb-3">Issued by GUVI</p>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#certModal" onclick="showCert('https://media.licdn.com/dms/image/v2/D5622AQHwgiklipZ_sA/feedshare-shrink_1280/feedshare-shrink_1280/0/1692429088284?e=1784764800&v=beta&t=HWXU5hs7QWKoC_uVC99iQgXPg8L0XJKT_WExBTvUGXk', 'Python Programming')">View Certificate</button>
+        </div>
+    </div>
+</div>
+
+            <div class="col-md-3">
+    <div class="cert-card d-flex flex-column justify-content-between">
+        <div>
+            <i class="bi bi-cpu"></i>
+            <h5>ChatGPT for Everyone</h5>
+            <p class="mb-3">Issued by GUVI</p>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#certModal" onclick="showCert('https://media.licdn.com/dms/image/v2/D4D22AQEBOW4_y0XifQ/feedshare-image-high-res/B4DZgtSynvG8As-/0/1753106583348?e=1784764800&v=beta&t=9uTrIxTO_lvGqSiKnXOCTY7SU8jRuLvMP3C3FOzVdt4', 'ChatGPT for Everyone')">View Certificate</button>
+        </div>
+    </div>
+</div>
+
+            <div class="col-md-3">
+    <div class="cert-card d-flex flex-column justify-content-between">
+        <div>
+            <i class="bi bi-building"></i>
+            <h5>Data Analytics Simulation</h5>
+            <p class="mb-3">Forage (Deloitte Simulated Track)</p>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#certModal" onclick="showCert('https://media.licdn.com/dms/image/v2/D4D22AQE8cMLt9hVx7g/feedshare-image-high-res/B4DZsiAwa2G0Ao-/0/1765802184605?e=1784764800&v=beta&t=LzgrrDHumVH1_eI7c8dcJiErYFWiTImh8n6CmlPEgj8', 'Data Analytics Simulation')">View Certificate</button>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="certModal" tabindex="-1" aria-labelledby="certModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="background-color: var(--bg-card); border: 1px solid var(--accent);">
+            <div class="modal-header" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <h5 class="modal-title" id="certModalLabel" style="color: var(--text-primary);">Certificate View</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-delete="modal" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-3">
+                <img id="modalCertImage" src="" class="img-fluid rounded" alt="Certificate Image" style="max-height: 75vh; object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showCert(imageSrc, certTitle) {
+        document.getElementById('modalCertImage').src = imageSrc;
+        document.getElementById('certModalLabel').innerText = certTitle;
+    }
+</script>
+<section id="contact" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="row text-center g-4 justify-content-center">
+            
+            <div class="col-12 col-md-4">
+                <div class="p-4 rounded h-100" style="background-color: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.03);">
+                    <i class="bi bi-envelope-fill" style="font-size: 2rem; color: var(--accent);"></i>
+                    <h5 class="mt-3 font-weight-bold" style="color: var(--text-primary);">Email Me</h5>
+                    <p class="mb-0" style="word-break: break-all;"><a href="mailto:sudeshkamthekar673@gmail.com" style="color: var(--text-secondary); text-decoration: none;">sudeshkamthekar673@gmail.com</a></p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="p-4 rounded h-100" style="background-color: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.03);">
+                    <i class="bi bi-telephone-fill" style="font-size: 2rem; color: var(--accent);"></i>
+                    <h5 class="mt-3 font-weight-bold" style="color: var(--text-primary);">Call / WhatsApp</h5>
+                    <p class="mb-0" style="color: var(--text-secondary);">9324590148</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="p-4 rounded h-100" style="background-color: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.03);">
+                    <i class="bi bi-geo-alt-fill" style="font-size: 2rem; color: var(--accent);"></i>
+                    <h5 class="mt-3 font-weight-bold" style="color: var(--text-primary);">Location</h5>
+                    <p class="mb-0" style="color: var(--text-secondary);">Kolad, Maharashtra, India</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container text-center">
+        <p class="mb-0">© 2026 Sudesh Kamthekar. Built with Passion & Clean Code.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+    AOS.init({ duration: 800, once: true });
+
+    new Typed("#typing", {
+        strings: [
+            "Python Backend Developer",
+            "Django Web Specialist",
+            "Full-Stack Software Engineer",
+            "Computer Engineering Student"
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true
+    });
+
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        navbar.style.padding = window.scrollY > 50 ? '10px 0' : '20px 0';
+    });
+</script>
+</body>
+</html>
